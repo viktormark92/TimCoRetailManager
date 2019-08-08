@@ -1,2 +1,2 @@
 # TimCoRetailManager
-A retail management system built by Tim Corney for practising.
+A retail management system built by Tim Corney for practise.
