@@ -5,6 +5,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
+using TRMDesktopUI.Helpers;
 using TRMDesktopUI.ViewModels;
 
 namespace TRMDesktopUI
@@ -16,6 +18,11 @@ namespace TRMDesktopUI
         public Bootstrapper()
         {
             Initialize();
+            //code from stackoverflow
+            ConventionManager.AddElementConvention<PasswordBox>(
+           PasswordBoxHelper.BoundPasswordProperty,
+           "Password",
+           "PasswordChanged");
         }
 
         protected override void Configure()
@@ -25,7 +32,8 @@ namespace TRMDesktopUI
             //these are the important for caliburn micro
             _container
                 .Singleton<IWindowManager, WindowManager>()
-                .Singleton<IEventAggregator, EventAggregator>();
+                .Singleton<IEventAggregator, EventAggregator>()
+                .Singleton<IAPIHelper, APIHelper>();
 
             //singleton we create one instance of ther class for the life of the application.
 
